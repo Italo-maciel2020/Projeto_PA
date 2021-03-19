@@ -88,9 +88,9 @@ void Sculptor::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
 }
 
 void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius){
-    for(int i=-xcenter; i< xcenter; i++){
-        for(int j=-ycenter; j< ycenter; j++){
-            for(int k=-zcenter; k< zcenter; k++){
+    for(int i=0; i< xcenter; i++){
+        for(int j=0; j< ycenter; j++){
+            for(int k=0; k< zcenter; k++){
                 //equacao da esfera
                 if (((i-xcenter)*(i-xcenter)) + ((j-ycenter)*(j-ycenter)) + ((k-zcenter)*(k-zcenter)) <= ((radius)*(radius))){
                     putVoxel(i,j,k);
@@ -101,9 +101,9 @@ void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius){
 }
 
 void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
-   for(int i=xcenter; i< xcenter; i++){
-           for(int j=ycenter; j< ycenter; j++){
-               for(int k=-zcenter; k< zcenter; k++){
+   for(int i=0; i< xcenter; i++){
+           for(int j=0; j< ycenter; j++){
+               for(int k=0; k< zcenter; k++){
                    //equacao da esfera
                    if (((i-xcenter)*(i-xcenter)) + ((j-ycenter)*(j-ycenter)) + ((k-zcenter)*(k-zcenter)) <= ((radius)*(radius))){
                        cutVoxel(i,j,k);
