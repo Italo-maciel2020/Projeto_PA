@@ -3,6 +3,7 @@
 #include <fstream>
 #include <cstring>
 #include <stdlib.h>
+#include <cmath>
 
 using namespace std;
 
@@ -93,11 +94,11 @@ void Sculptor::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
 }
 
 void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius){
-  for(int i=0; i< xcenter; i++){
-    for(int j=0; j< ycenter; j++){
-      for(int k=0; k< zcenter; k++){
+  for(int i= xcenter - radius; i< nx; i++){
+    for(int j= ycenter - radius; j< ny; j++){
+      for(int k= zcenter - radius; k< nz ; k++){
         //equacao da esfera
-        if (((i-xcenter)*(i-xcenter)) + ((j-ycenter)*(j-ycenter)) + ((k-zcenter)*(k-zcenter)) <= ((radius)*(radius))){
+        if (pow(i-xcenter,2) + pow(j-ycenter,2) + pow(k-zcenter,2) <= pow(radius,2)){
           putVoxel(i,j,k);
         }
       }
@@ -106,11 +107,11 @@ void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius){
 }
 
 void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
-  for(int i=0; i< xcenter; i++){
-    for(int j=0; j< ycenter; j++){
-      for(int k=0; k< zcenter; k++){
+  for(int i= xcenter - radius; i< nx; i++){
+    for(int j= ycenter - radius; j< ny; j++){
+      for(int k= zcenter - radius; k< nz; k++){
         //equacao da esfera
-        if (((i-xcenter)*(i-xcenter)) + ((j-ycenter)*(j-ycenter)) + ((k-zcenter)*(k-zcenter)) <= ((radius)*(radius))){
+        if (pow(i-xcenter,2) + pow(j-ycenter,2) + pow(k-zcenter,2) <= pow(radius,2)){
           cutVoxel(i,j,k);
         }
       }
@@ -120,11 +121,11 @@ void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
 
 
 void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
-  for(int i=-xcenter; i< xcenter; i++){
-    for(int j=-ycenter; j< ycenter; j++){
-      for(int k=-zcenter; k< zcenter; k++){
-        //equacao da esfera
-        if ((((i-xcenter)*(i-xcenter))/((float)((rx)*(rx)))) + ((((j-ycenter)*(j-ycenter)))/((float)((ry)*(ry)))) + ((((k-zcenter)*(k-zcenter)))/((float)((rz)*(rz)))) <=1.0){
+  for(int i=xcenter - rx; i< nx; i++){
+    for(int j=ycenter - ry; j< ny; j++){
+      for(int k=zcenter - rz; k< nz; k++){
+        //equacao da elipsoid
+        if ((pow((i-xcenter),2)/pow(rx,2)) + (pow((j-ycenter),2)/pow(ry,2)) + (pow((k-zcenter),2)/pow(rz,2)) <=1.0){
           putVoxel(i,j,k);
         }
       }
@@ -133,11 +134,11 @@ void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int r
 }
 
 void Sculptor::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
-  for(int i=xcenter; i< xcenter; i++){
-    for(int j=ycenter; j< ycenter; j++){
-      for(int k=zcenter; k< zcenter; k++){
-        //equacao da esfera
-        if ((((i-xcenter)*(i-xcenter))/(((rx)*(rx)))) + ((((j-ycenter)*(j-ycenter)))/(((ry)*(ry)))) + ((((k-zcenter)*(k-zcenter)))/(((rz)*(rz)))) <=1.0){
+  for(int i=xcenter - rx; i< nx; i++){
+    for(int j=ycenter - ry; j< ny; j++){
+      for(int k=zcenter - rz; k< nz; k++){
+        //equacao da elipsoide.
+         if ((pow((i-xcenter),2)/pow(rx,2)) + (pow((j-ycenter),2)/pow(ry,2)) + (pow((k-zcenter),2)/pow(rz,2)) <=1.0){
           cutVoxel(i,j,k);
         }
       }
