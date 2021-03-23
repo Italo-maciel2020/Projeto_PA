@@ -14,6 +14,7 @@ int main(void)
     m.putBox(1,14,1,14,1,1);
     m.putBox(6,9,6,9,2,14);
     m.putSphere(8,8,15,7);
+    m.cutBox(0,15,10,15,9,30);
     m.writeOFF("teste.off");
     return 0;
 }
