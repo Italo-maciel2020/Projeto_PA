@@ -9,12 +9,13 @@ using namespace std;
 int main(void)
 {
     Sculptor m(20,30,40);
-    m.setColor(1,0,0,1);
-    m.putBox(0,15,0,15,0,0);
-    m.putBox(1,14,1,14,1,1);
-    m.putBox(6,9,6,9,2,14);
-    m.putSphere(8,8,15,7);
-    m.cutBox(0,15,10,15,9,30);
-    m.writeOFF("teste.off");
+    m.setColor( 1, 1, 0, 1);
+    m.putSphere(8,8,8,4);
+    m.cutBox(0,15,0,15,0,7);
+    m.cutBox(0,15,0,15,9,16);
+    m.putBox(7,9,7,7,9,16);
+    m.putBox(3,13,8,9,11,19);
+    m.cutBox(4,12,9,9,12,18);
+    m.writeOFF("monitor.off");
     return 0;
 }
