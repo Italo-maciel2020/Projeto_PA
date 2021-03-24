@@ -48,10 +48,10 @@ Sculptor::~Sculptor(){
 }
 
 // Construtor com argumentos - Recebe as dimensões do Voxel e as coordenadas do mesmo.
-void Sculptor::setColor(float r, float g, float b, float alpha){
-  this->r = r;
-  this->g = g;
-  this->b = b;
+void Sculptor::setColor(float _r, float _g, float _b, float alpha){
+  this->r = _r;
+  this->g = _g;
+  this->b = _b;
   a = alpha;
 }
 
